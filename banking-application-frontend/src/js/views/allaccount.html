@@ -1,0 +1,49 @@
+<div id="allAccounts-container" class="oj-flex oj-sm-justify-content-center oj-sm-align-items-center" style="height:100vh;">
+  <div class="oj-panel oj-flex-item oj-sm-width-1 oj-md-width-8" style="padding:32px; border-radius:12px;">
+    <h2 class="oj-text-center">Manage Accounts</h2>
+
+    <div class="oj-sm-margin-2x oj-text-center" data-bind="text: message" style="color: red; font-weight: bold;"></div>
+
+    <div class="oj-flex oj-sm-flex-direction-column oj-sm-margin-bottom-2x">
+      <oj-input-text id="useridInput"
+                     value="{{userid}}"
+                     label-hint="Search by User ID"
+                     class="oj-flex-item oj-sm-flex-1 oj-form-control-full-width">
+      </oj-input-text>
+    </div>
+
+    <div class="oj-flex oj-sm-align-items-center">
+      <oj-button id="searchButton" on-oj-action="[[searchAccounts]]" class="oj-button-primary oj-sm-margin-end-1x">
+        Search
+      </oj-button>
+      <oj-button id="showAllButton" on-oj-action="[[fetchAllAccounts]]" class="oj-button-secondary">
+        Show All
+      </oj-button>
+    </div>
+
+    <div class="oj-sm-margin-top-3x oj-text-center">
+      <oj-button on-oj-action="[[navigateToAccountApprove]]" class="oj-button-confirm">
+        Approve Account
+      </oj-button>
+    </div>
+
+    <oj-table id="accountsTable"
+              aria-label="Accounts Table"
+              data="[[accountDataProvider]]"
+              columns='[
+                {"headerText": "Account ID", "field": "id"},
+                {"headerText": "User ID", "field": "userId"},
+                {"headerText": "Account Number", "field": "accountNumber"},
+                {"headerText": "Account Type", "field": "accountType"},
+                {"headerText": "Balance", "field": "balance"},
+                {"headerText": "Created At", "field": "createdAt"},
+                {"headerText": "Approved At", "field": "approvedAt"},
+                {"headerText": "Status", "field": "status"},
+                {"headerText": "Approved By Employee", "field": "approvedByEmployeeId"},
+                {"headerText": "Approved", "field": "approved"}
+              ]'
+              class="oj-sm-margin-top-4x"
+              style="width:100%;">
+    </oj-table>
+  </div>
+</div>

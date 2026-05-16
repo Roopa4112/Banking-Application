@@ -1,0 +1,65 @@
+<div class="oj-flex oj-sm-justify-content-center oj-sm-align-items-center" style="min-height:100vh; padding:30px;">
+  <div class="oj-panel custom-panel">
+    <h2 class="oj-typography-heading-sm oj-text-center">Sign Up</h2>
+
+    <!-- Signup form -->
+    <oj-validation-group id="signupForm">
+      <oj-form-layout max-columns="1" direction="column" label-edge="top">
+
+        <!-- Full Name -->
+        <oj-input-text id="name"
+                       label-hint="Full Name"
+                       value="{{name}}"
+                       required="true"
+                       class="oj-form-control-full-width">
+        </oj-input-text>
+
+        <!-- Email -->
+        <oj-input-text id="email"
+                       label-hint="Email"
+                       value="{{email}}"
+                       required="true"
+                       class="oj-form-control-full-width">
+        </oj-input-text>
+
+        <!-- Password -->
+        <oj-input-text id="password"
+                       label-hint="Password"
+                       type="password"
+                       value="{{password}}"
+                       required="true"
+                       class="oj-form-control-full-width">
+        </oj-input-text>
+
+        <!-- Role Selection -->
+        <oj-select-single id="role"
+                          label-hint="Role"
+                          value="{{role}}"
+                          data="[[roleOptions]]"
+                          required="true"
+                          class="oj-form-control-full-width">
+        </oj-select-single>
+
+        <!-- Signup button -->
+        <oj-button id="signupBtn"
+                   on-oj-action="[[signup]]"
+                   disabled="[[!isFormValid()]]"
+                   class="oj-sm-margin-top-4 oj-button-fullwidth">
+          Sign Up
+        </oj-button>
+
+      </oj-form-layout>
+    </oj-validation-group>
+  </div>
+</div>
+
+<style>
+  .custom-panel {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #ffffff;
+  }
+</style>

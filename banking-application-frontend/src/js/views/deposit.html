@@ -1,0 +1,96 @@
+<!-- ✅ Deposit Form -->
+<oj-bind-if test="[[!depositSuccess()]]">
+  <div id="transaction-container" 
+       class="oj-flex oj-sm-justify-content-center oj-sm-align-items-center" 
+       style="min-height:100vh; padding:30px;">
+       
+    <div class="oj-panel custom-panel">
+      <h2 class="oj-typography-heading-sm oj-text-center">Deposit Money</h2>
+
+      <!-- Validation group -->
+      <oj-validation-group id="depositForm">
+        <oj-form-layout label-edge="top" class="oj-sm-width-full">
+
+          <!-- Account ID dropdown -->
+          <oj-select-single
+            id="accountDropdown"
+            data="[[depositDataProvider]]"
+            value="{{selectedAccountId}}"
+            label-hint="Select Account ID"
+            class="oj-form-control-full-width">
+          </oj-select-single>
+
+          <!-- Amount input -->
+          <oj-input-number
+            id="depositAmount"
+            label-hint="Enter Amount"
+            value="{{depositAmount}}"
+            min="100"
+            step="100"
+            required
+            class="oj-form-control-full-width">
+          </oj-input-number>
+
+          <!-- Deposit button -->
+          <div class="oj-text-center oj-sm-margin-top-4x">
+            <oj-button id="depositBtn" 
+                       on-oj-action="[[deposit]]" 
+                       class="oj-button-primary oj-button-fullwidth">
+              Deposit
+            </oj-button>
+          </div>
+
+        </oj-form-layout>
+      </oj-validation-group>
+    </div>
+  </div>
+</oj-bind-if>
+
+<!-- ✅ Deposit Success Section -->
+<oj-bind-if test="[[depositSuccess()]]">
+  <div class="oj-flex oj-sm-justify-content-center oj-sm-align-items-center" style="min-height:100vh; padding:30px;">
+    <div class="oj-panel custom-panel">
+
+      <h2 class="oj-typography-heading-sm oj-text-color-success oj-text-center">✅ Deposit Successful</h2>
+
+      <p>Transaction ID:
+        <strong><oj-bind-text value="[[depositResponse().id]]"></oj-bind-text></strong>
+      </p>
+      <p>Account ID:
+        <strong><oj-bind-text value="[[depositResponse().accountId]]"></oj-bind-text></strong>
+      </p>
+      <p>Amount: ₹<oj-bind-text value="[[depositResponse().amount]]"></oj-bind-text></p>
+      <p>Status: 
+        <span class="oj-text-color-success">
+          <oj-bind-text value="[[depositResponse().status]]"></oj-bind-text>
+        </span>
+      </p>
+      <p>Date:
+        <oj-bind-text value="[[formatDate(depositResponse().date)]]"></oj-bind-text>
+      </p>
+      <p>Transaction Type:
+        <oj-bind-text value="[[depositResponse().transactionType]]"></oj-bind-text>
+      </p>
+      <p>Approved By Employee:
+        <oj-bind-text value="[[depositResponse().approvedByEmployeeId]]"></oj-bind-text>
+      </p>
+
+      <!-- Actions -->
+      <div class="oj-sm-margin-4x-top oj-flex oj-flex-wrap oj-flex-gap-2x">
+        <oj-button on-oj-action="[[makeAnotherDeposit]]" class="oj-button-fullwidth">Make Another Deposit</oj-button>
+      </div>
+
+    </div>
+  </div>
+</oj-bind-if>
+
+<style>
+  .custom-panel {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #ffffff;
+  }
+</style>

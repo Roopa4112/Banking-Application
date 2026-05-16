@@ -1,0 +1,95 @@
+<div class="profile-container" data-bind="with: employee">
+  <div class="profile-panel">
+    <h2>Employee Profile</h2>
+
+    <!-- Employee Details -->
+    <div class="user-details">
+      <p><b>Employee ID:</b> <span data-bind="text: id"></span></p>
+      <p><b>Name:</b> <span data-bind="text: name"></span></p>
+      <p><b>Role:</b> <span data-bind="text: role"></span></p>
+    </div>
+
+    <!-- Key Responsibilities -->
+    <div class="responsibilities">
+      <h3>Key Responsibilities</h3>
+      <ul data-bind="foreach: responsibilities">
+        <li data-bind="text: $data"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ===== Full Page Container ===== */
+  .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    background-color: #f5f6fa;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+
+  /* ===== Full Page Panel ===== */
+  .profile-panel {
+    width: 100%;
+    max-width: 700px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 32px; /* spacing between sections */
+  }
+
+  /* ===== Headings ===== */
+  .profile-panel h2, .profile-panel h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+
+  /* ===== Employee Details ===== */
+  .user-details {
+    background: #ecf0f1;
+    padding: 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #34495e;
+  }
+
+  .user-details p {
+    margin: 8px 0;
+  }
+
+  /* ===== Responsibilities Section ===== */
+  .responsibilities {
+    background: #e8f5e9; /* same light-green section as in profile.html's account list */
+    padding: 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #2c3e50;
+  }
+
+  .responsibilities ul {
+    padding-left: 20px;
+    margin: 8px 0;
+  }
+
+  .responsibilities li {
+    margin: 6px 0;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    .profile-panel {
+      padding: 24px;
+    }
+    .user-details, .responsibilities {
+      font-size: 14px;
+      padding: 16px;
+    }
+  }
+</style>

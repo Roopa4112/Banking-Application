@@ -1,0 +1,80 @@
+<div class="oj-flex oj-sm-justify-content-center oj-sm-align-items-center" style="min-height:100vh; padding:30px;">
+  <!-- <div class="oj-panel oj-sm-12 oj-md-6 oj-lg-4"> -->
+    <div class="oj-panel custom-panel">
+    <h2 class="oj-typography-heading-sm oj-text-center">Loan Application</h2>
+
+    <!-- Validation group wrapper -->
+    <oj-validation-group id="loanForm">
+      <oj-form-layout max-columns="1" direction="column" label-edge="top">
+
+        <!-- Select Account -->
+        <oj-select-single id="accountId"
+                          label-hint="Select Account"
+                          placeholder="Choose an account"
+                          value="{{accountId}}"
+                          data="[[accountsDataProvider]]"
+                          required
+                          class="oj-form-control-full-width">
+        </oj-select-single>
+
+        <!-- Loan Type -->
+        <oj-select-single id="loanType"
+                          label-hint="Loan Type"
+                          value="{{loanType}}"
+                          data="[[loanTypes]]"
+                          required
+                          class="oj-form-control-full-width">
+        </oj-select-single>
+
+        <!-- Loan Amount -->
+        <oj-input-number id="amount"
+                         label-hint="Loan Amount"
+                         value="{{amount}}"
+                         min="1000"
+                         step="500"
+                         required
+                         class="oj-form-control-full-width">
+        </oj-input-number>
+
+        <!-- Interest Rate -->
+        <oj-input-number id="interestRate"
+                         label-hint="Interest Rate (%)"
+                         value="{{interestRate}}"
+                         min="1"
+                         max="30"
+                         step="0.5"
+                         required
+                         class="oj-form-control-full-width">
+        </oj-input-number>
+
+        <!-- Term (Months) -->
+        <oj-input-number id="termMonths"
+                         label-hint="Term (Months)"
+                         value="{{termMonths}}"
+                         min="6"
+                         step="2"
+                         required
+                         class="oj-form-control-full-width">
+        </oj-input-number>
+
+        <!-- Submit Button -->
+        <oj-button id="submitLoan"
+                   on-oj-action="[[submitLoanApplication]]"
+                   class="oj-sm-margin-top-4 oj-button-fullwidth">
+          Apply Loan
+        </oj-button>
+
+      </oj-form-layout>
+    </oj-validation-group>
+  </div>
+</div>
+<style>
+  .custom-panel {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #ffffff;
+  }
+</style>

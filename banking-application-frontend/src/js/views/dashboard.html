@@ -1,0 +1,115 @@
+<oj-panel class="oj-flex oj-sm-flex-direction-column oj-sm-align-items-center oj-sm-padding-6x oj-bg-neutral-0">
+
+  <!-- Welcome Section -->
+  <div class="oj-flex oj-sm-flex-direction-column oj-sm-align-items-center oj-sm-margin-6x-bottom">
+    <h1 class="oj-typography-heading-xl">Welcome to Valora Bank</h1>
+    <p class="oj-typography-body-md oj-sm-margin-2x-top oj-sm-width-75 oj-sm-text-align-center">
+     At Valora Bank, we are committed to empowering your financial journey with secure banking solutions, innovative products, and customer-first services.
+     We believe in building trust through transparency, reliability, and technology-driven banking that fits seamlessly into your lifestyle.
+     Whether you are saving for your future, applying for a loan, or exploring new investment opportunities, we are here to support you every step of the way.
+     Our mission is not just to provide financial services, but to enable every customer to grow with confidence, achieve their goals, and create a better tomorrow.
+    </p>
+  </div>
+
+
+
+  
+  <!-- 🎞️ Image Filmstrip -->
+  <oj-film-strip id="bankFilmStrip"
+                 arrow-display="always"
+                 arrow-placement="adjacent"
+                 max-items-per-page="1"
+                 style="height:320px; width:75%; margin:0 auto; border-radius:12px;">
+    <oj-bind-for-each data="[[bankImages]]">
+      <template>
+        <div class="oj-flex">
+          <img data-bind="attr: { src: $current.data.src, alt: $current.data.alt }"
+               style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+        </div>
+      </template>
+    </oj-bind-for-each>
+  </oj-film-strip>
+
+<!-- Show Login button if NOT logged in -->
+<!-- <oj-bind-if test="[[!isLoggedIn()]]">
+  <oj-button class="oj-button-primary oj-sm-margin-2x" on-oj-action="[[navigateToLogin]]">
+    Login
+  </oj-button>
+</oj-bind-if> -->
+
+<!-- Show Logout button if logged in -->
+<!-- <oj-bind-if test="[[isLoggedIn()]]">
+  <oj-button class="oj-button-secondary oj-sm-margin-2x" on-oj-action="[[logout]]">
+    Logout
+  </oj-button>
+</oj-bind-if> -->
+
+
+
+  <!-- <oj-button class="oj-sm-margin-6x-top" on-oj-action="[[navigateToLogin]]">
+  Login
+</oj-button> -->
+
+  <!-- Services Section -->
+  <div class="oj-flex oj-sm-flex-wrap oj-sm-justify-content-center oj-sm-margin-6x-bottom oj-sm-width-90">
+    <oj-card class="oj-sm-margin-2x oj-sm-padding-4x oj-sm-flex-item oj-bg-neutral-1 oj-border-radius">
+      <h3>🏦 Account Services</h3>
+      <p>Open and manage savings & current accounts.</p>
+    </oj-card>
+    <oj-card class="oj-sm-margin-2x oj-sm-padding-4x oj-sm-flex-item oj-bg-neutral-1 oj-border-radius">
+      <h3>💰 Loans & Credit</h3>
+      <p>Personal, home & business loans at competitive rates.</p>
+    </oj-card>
+    <oj-card class="oj-sm-margin-2x oj-sm-padding-4x oj-sm-flex-item oj-bg-neutral-1 oj-border-radius">
+      <h3>💳 Debit & Credit Cards</h3>
+      <p>Secure transactions with exclusive rewards.</p>
+    </oj-card>
+    <oj-card class="oj-sm-margin-2x oj-sm-padding-4x oj-sm-flex-item oj-bg-neutral-1 oj-border-radius">
+      <h3>📈 Investments</h3>
+      <p>Grow wealth through FDs, mutual funds & more.</p>
+    </oj-card>
+  </div>
+
+  <!-- Bank Highlights -->
+  <div class="oj-sm-width-75 oj-sm-margin-6x-bottom oj-bg-neutral-1 oj-sm-padding-4x oj-border-radius">
+    <h2 class="oj-typography-heading-md oj-sm-margin-2x-bottom">Bank Highlights</h2>
+    <ul class="oj-typography-body-md">
+      <li>💹 Current FD Rate: <b>7.25%</b> p.a.</li>
+      <li>💳 Instant Digital Card Issuance</li>
+      <li>📱 Mobile Banking with AI-powered insights</li>
+      <li>⚡ Quick Loan Approvals with minimal documentation</li>
+    </ul>
+  </div>
+
+  <!-- Investment with Graph -->
+  <div class="oj-sm-width-90 oj-sm-margin-6x-bottom">
+    <h2 class="oj-typography-heading-md oj-sm-margin-2x-bottom">Investment Trends</h2>
+    <oj-chart 
+        id="investmentChart"
+        type="line"
+        series="[[growthSeries]]"
+        groups="[[growthGroups]]"
+        animation-on-display="auto"
+        animation-on-data-change="auto"
+        class="oj-sm-width-full oj-sm-padding-2x oj-bg-neutral-1 oj-border-radius"
+        style="height:300px; width:100%;">
+    </oj-chart>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="oj-flex oj-sm-flex-wrap oj-sm-justify-content-center oj-sm-margin-6x-bottom oj-sm-width-90">
+  <oj-card class="oj-sm-margin-2x oj-sm-padding-4x oj-sm-flex-item oj-bg-success-10 oj-border-radius">
+    <h3>Total Users</h3>
+    <span data-bind="text: totalUsers"></span>
+  </oj-card>
+  <oj-card class="oj-sm-margin-2x oj-sm-padding-4x oj-sm-flex-item oj-bg-warning-10 oj-border-radius">
+    <h3>Total Accounts</h3>
+    <span data-bind="text: totalAccounts"></span>
+  </oj-card>
+  <oj-card class="oj-sm-margin-2x oj-sm-padding-4x oj-sm-flex-item oj-bg-info-10 oj-border-radius">
+    <h3>Total Loans</h3>
+    <span data-bind="text: totalLoans"></span>
+  </oj-card>
+</div>
+
+</oj-panel>

@@ -1,0 +1,78 @@
+<!-- ✅ Approve Account Form -->
+<oj-bind-if test="[[!accountApproveSuccess()]]">
+  <div id="account-approved-container" class="oj-flex oj-sm-justify-content-center oj-sm-align-items-center" style="height:100vh;">
+    <div class="oj-panel custom-panel">
+      <h2 class="oj-typography-heading-sm oj-text-center">Approve Account</h2>
+
+      <oj-form-layout max-columns="1" class="oj-sm-width-full">
+
+        <!-- Employee ID -->
+        <oj-input-text
+          id="employeeId"
+          label-hint="Employee ID"
+          value="{{employeeId}}"
+          readonly
+          class="oj-form-control-full-width">
+        </oj-input-text>
+
+        <!-- Account Select -->
+        <oj-select-single
+          id="accountSelect"
+          label-hint="Select Account"
+          value="{{selectedAccountId}}"
+          data="[[accountDataProvider]]"
+          item-text="label"
+          item-value="value"
+          required
+          class="oj-form-control-full-width"
+          placeholder="Choose account">
+        </oj-select-single>
+
+        <!-- Approve Button -->
+        <div class="oj-text-center oj-sm-margin-top-4x">
+          <oj-button id="approveBtn"
+                     on-oj-action="[[approveAccount]]"
+                     class="oj-button-primary oj-button-fullwidth">
+            Approve Account
+          </oj-button>
+        </div>
+
+      </oj-form-layout>
+    </div>
+  </div>
+</oj-bind-if>
+
+<!-- ✅ Approval Success Panel -->
+<oj-bind-if test="[[accountApproveSuccess()]]">
+  <div class="oj-flex oj-sm-justify-content-center oj-sm-align-items-center" style="min-height:100vh; padding:30px;">
+    <div class="oj-panel custom-panel">
+
+      <h2 class="oj-typography-heading-sm oj-text-color-success oj-text-center">✅ Account Approved Successfully</h2>
+
+      <p>Account ID:
+        <strong><oj-bind-text value="[[accountApproveResponse().id]]"></oj-bind-text></strong>
+      </p>
+      <p>Account Type:
+        <strong><oj-bind-text value="[[accountApproveResponse().accountType]]"></oj-bind-text></strong>
+      </p>
+      <p>Balance: ₹<oj-bind-text value="[[accountApproveResponse().balance]]"></oj-bind-text></p>
+      <p>Status:
+        <span class="oj-text-color-success">
+          <oj-bind-text value="[[accountApproveResponse().status]]"></oj-bind-text>
+        </span>
+      </p>
+      <p>Approved By Employee ID:
+        <oj-bind-text value="[[accountApproveResponse().approvedByEmployeeId]]"></oj-bind-text>
+      </p>
+      <p>Date:
+        <oj-bind-text value="[[formatDate(accountApproveResponse().approvedAt)]]"></oj-bind-text>
+      </p>
+
+      <!-- Actions -->
+      <div class="oj-sm-margin-4x-top oj-flex oj-flex-wrap oj-flex-gap-2x">
+        <oj-button on-oj-action="[[approveAnotherAccount]]" class="oj-button-fullwidth">Approve Another Account</oj-button>
+      </div>
+
+    </div>
+  </div>
+</oj-bind-if>

@@ -1,0 +1,211 @@
+<style>
+  /* ===== Full Page Container ===== */
+  .profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    background-color: #f5f6fa;
+    min-height: 100vh;
+  }
+
+  /* ===== Full Page Panel ===== */
+  .profile-panel {
+    width: 100%;
+    max-width: 1000px;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 32px; /* spacing between sections */
+  }
+
+  /* ===== Headings ===== */
+  .profile-panel h2, .profile-panel h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+
+  /* ===== User Details ===== */
+  .user-details {
+    background: #ecf0f1;
+    padding: 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #34495e;
+  }
+
+  .user-details p {
+    margin: 8px 0;
+  }
+
+  /* ===== Account List Container ===== */
+  .account-list-container {
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #e8f5e9;
+  }
+  
+  .account-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .account-item {
+    padding: 12px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .account-item.selected {
+    background-color: #388E3C;
+    border: 2px solid #2E7D32;
+  }
+
+  .account-item:hover {
+    background-color: #388E3C;
+  }
+
+  /* ===== Account Info ===== */
+  .account-info {
+    background: #dff9fb;
+    padding: 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #2c3e50;
+  }
+
+  /* ===== Tables ===== */
+  .oj-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 16px;
+  }
+
+  .oj-table th, .oj-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .oj-table th {
+    background-color: #bdc3c7;
+    color: #2c3e50;
+    font-weight: 600;
+  }
+
+  .oj-table-hover tbody tr:hover {
+    background-color: #f1f7fd;
+  }
+
+  /* ===== Loans Section ===== */
+  .loans-section {
+    background: #f9f3e7;
+    padding: 24px;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+
+  .loans-section table th {
+    background-color: #f0d9b5;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 768px) {
+    .profile-panel {
+      padding: 24px;
+    }
+    .oj-table, .user-details, .account-info, .loans-section {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<div class="profile-container">
+  <div class="profile-panel">
+
+    <!-- User Details -->
+    <h2>User Profile</h2>
+    <div class="user-details">
+      <p><b>Name:</b> <span data-bind="text: userName"></span></p>
+      <p><b>Email:</b> <span data-bind="text: userEmail"></span></p>
+      <p><b>Role:</b> <span data-bind="text: userRole"></span></p>
+    </div>
+
+    <!-- Account List -->
+    <div class="account-list-container" data-bind="if: accounts().length > 1">
+        <h3>Your Accounts</h3>
+        <ul class="account-list" data-bind="foreach: accounts">
+            <li class="account-item" 
+                data-bind="text: accountNumber,
+                           css: { selected: $data === $parent.selectedAccount() },
+                           click: $parent.selectAccount"></li>
+        </ul>
+    </div>
+    
+    <!-- Account Info -->
+    <div class="account-info" data-bind="with: selectedAccount">
+      <h3>Account Details</h3>
+      <p><b>Account ID:</b> <span data-bind="text: id"></span></p>
+      <p><b>Account Number:</b> <span data-bind="text: accountNumber"></span></p>
+      <p><b>Type:</b> <span data-bind="text: accountType"></span></p>
+      <p><b>Balance:</b> ₹<span data-bind="text: balance"></span></p>
+    </div>
+
+    <!-- Transactions Table -->
+    <div>
+      <h3>Transactions</h3>
+      <table class="oj-table oj-table-hover">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody data-bind="foreach: transactions">
+          <tr>
+            <td data-bind="text: date"></td>
+            <td data-bind="text: transactionType"></td>
+            <td data-bind="text: amount"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Loans Section -->
+    <div class="loans-section" data-bind="if: loans().length > 0">
+      <h3>Loans</h3>
+      <table class="oj-table oj-table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody data-bind="foreach: loans">
+          <tr>
+            <td data-bind="text: id"></td>
+            <td data-bind="text: amount"></td>
+            <td data-bind="text: status"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

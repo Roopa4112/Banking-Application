@@ -1,0 +1,80 @@
+<!-- Withdraw Form -->
+<oj-bind-if test="[[!withdrawSuccess()]]">
+  <div class="oj-flex oj-sm-justify-content-center oj-sm-align-items-center" style="min-height:100vh; padding:30px;">
+    <div class="oj-panel custom-panel">
+
+      <h2 class="oj-typography-heading-sm oj-text-center">Withdraw Money</h2>
+
+      <oj-validation-group id="withdrawForm">
+        <oj-form-layout label-edge="top" class="oj-sm-margin-4x">
+
+          <!-- Account ID dropdown -->
+          <oj-select-single
+            id="accountDropdown"
+            data="[[accountsProvider]]"
+            value="{{selectedAccountId}}"
+            label-hint="Select Account ID"
+            class="oj-sm-12">
+          </oj-select-single>
+
+          <!-- Amount input -->
+          <oj-input-number
+            id="withdrawAmount"
+            label-hint="Enter Amount"
+            value="{{withdrawAmount}}"
+            min="100"
+            step="100"
+            required
+            class="oj-sm-12">
+          </oj-input-number>
+
+          <!-- Withdraw button -->
+          <oj-button id="withdrawBtn"
+                     on-oj-action="[[withdraw]]"
+                     class="oj-sm-margin-2x oj-button-fullwidth">
+            Withdraw
+          </oj-button>
+
+        </oj-form-layout>
+      </oj-validation-group>
+    </div>
+  </div>
+</oj-bind-if>
+
+<!-- Withdraw Success Panel -->
+<oj-bind-if test="[[withdrawSuccess()]]">
+  <div class="oj-flex oj-sm-justify-content-center oj-sm-align-items-center" style="min-height:100vh; padding:30px;">
+    <div class="oj-panel custom-panel">
+
+      <h2 class="oj-typography-heading-sm oj-text-color-success oj-text-center">✅ Withdraw Successful</h2>
+
+      <p>Transaction ID:
+        <strong><oj-bind-text value="[[withdrawResponse().id]]"></oj-bind-text></strong>
+      </p>
+      <p>Account ID:
+        <strong><oj-bind-text value="[[withdrawResponse().accountId]]"></oj-bind-text></strong>
+      </p>
+      <p>Amount: ₹<oj-bind-text value="[[withdrawResponse().amount]]"></oj-bind-text></p>
+      <p>Status: 
+        <span class="oj-text-color-success">
+          <oj-bind-text value="[[withdrawResponse().status]]"></oj-bind-text>
+        </span>
+      </p>
+      <p>Date:
+        <oj-bind-text value="[[formatDate(withdrawResponse().date)]]"></oj-bind-text>
+      </p>
+      <p>Transaction Type:
+        <oj-bind-text value="[[withdrawResponse().transactionType]]"></oj-bind-text>
+      </p>
+      <p>Approved By Employee:
+        <oj-bind-text value="[[withdrawResponse().approvedByEmployeeId]]"></oj-bind-text>
+      </p>
+
+      <!-- Actions -->
+      <div class="oj-sm-margin-4x-top oj-flex oj-flex-wrap oj-flex-gap-2x">
+        <oj-button on-oj-action="[[makeAnotherWithdraw]]" class="oj-button-fullwidth">Make Another Withdraw</oj-button>
+      </div>
+
+    </div>
+  </div>
+</oj-bind-if>

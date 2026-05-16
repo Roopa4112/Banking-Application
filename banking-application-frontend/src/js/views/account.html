@@ -1,0 +1,79 @@
+<!-- ✅ Account Creation Form -->
+<oj-bind-if test="[[!accountSuccess()]]">
+  <div id="account-container" class="oj-flex oj-sm-justify-content-center oj-sm-align-items-center" style="min-height:100vh; padding:30px;">
+    <div class="oj-panel custom-panel">
+
+      <h2 class="oj-typography-heading-sm oj-text-center">Create Account</h2>
+
+      <oj-form-layout max-columns="1" class="oj-sm-width-full">
+
+        <!-- User ID -->
+        <oj-input-text id="userId"
+                       label-hint="User ID"
+                       value="{{userId}}"
+                       readonly
+                       class="oj-form-control-full-width">
+        </oj-input-text>
+
+        <!-- Account Type Dropdown -->
+        <oj-select-single id="accountType"
+                          label-hint="Account Type"
+                          value="{{accountType}}"
+                          data="[[accountTypeOptions]]"
+                          required
+                          placeholder="Select account type"
+                          class="oj-form-control-full-width">
+        </oj-select-single>
+
+        <!-- Initial Balance -->
+        <oj-input-number id="initialBalance"
+                         label-hint="Initial Balance"
+                         value="{{initialBalance}}"
+                         min="1000"
+                         step="500"
+                         required
+                         class="oj-form-control-full-width">
+        </oj-input-number>
+
+        <!-- Create Account Button -->
+        <div class="oj-text-center oj-sm-margin-top-4x">
+          <oj-button id="createAccountBtn"
+                     on-oj-action="[[createAccount]]"
+                     class="oj-button-primary oj-button-fullwidth">
+            Create Account
+          </oj-button>
+        </div>
+
+      </oj-form-layout>
+    </div>
+  </div>
+</oj-bind-if>
+
+<!-- ✅ Account Creation Success Panel -->
+<oj-bind-if test="[[accountSuccess()]]">
+  <div class="oj-flex oj-sm-justify-content-center oj-sm-align-items-center" style="min-height:100vh; padding:30px;">
+    <div class="oj-panel custom-panel">
+
+      <h2 class="oj-typography-heading-sm oj-text-color-success oj-text-center">✅ Account Created Successfully</h2>
+
+      <p>Account ID:
+        <strong><oj-bind-text value="[[accountResponse().id]]"></oj-bind-text></strong>
+      </p>
+      <p>Account Type:
+        <strong><oj-bind-text value="[[accountResponse().accountType]]"></oj-bind-text></strong>
+      </p>
+      <p>Balance: ₹<oj-bind-text value="[[accountResponse().balance]]"></oj-bind-text></p>
+      <p>Status:
+        <span class="oj-text-color-success">
+          <oj-bind-text value="[[accountResponse().status]]"></oj-bind-text>
+        </span>
+      </p>
+
+      <!-- Actions -->
+      <div class="oj-sm-margin-4x-top oj-flex oj-flex-wrap oj-flex-gap-2x">
+        <oj-button on-oj-action="[[makeAnotherAccount]]" class="oj-button-fullwidth">Create Another Account</oj-button>
+      </div>
+
+    </div>
+  </div>
+</oj-bind-if>

@@ -1,0 +1,49 @@
+<div id="allloan-container" class="oj-flex oj-sm-justify-content-center oj-sm-align-items-center" style="height:100vh;">
+  <div class="oj-panel oj-flex-item oj-sm-width-1 oj-md-width-8" style="padding:32px; border-radius:12px;">
+    <h2 class="oj-text-center">Manage Loans</h2>
+
+    <div class="oj-flex oj-sm-flex-direction-column oj-sm-margin-bottom-2x">
+      <oj-input-text
+        id="searchAccountId"
+        label-hint="Search by Account ID"
+        value="{{searchAccountId}}"
+        class="oj-flex-item oj-sm-flex-1 oj-form-control-full-width">
+      </oj-input-text>
+    </div>
+
+    <div class="oj-flex oj-sm-align-items-center">
+      <oj-button id="searchBtn" on-oj-action="[[searchLoansByAccount]]" class="oj-button-primary oj-sm-margin-end-1x">
+        Search
+      </oj-button>
+      <oj-button on-oj-action="[[fetchAllLoans]]" class="oj-button-secondary">
+        Show All
+      </oj-button>
+    </div>
+
+    <div class="oj-sm-margin-top-2x oj-text-center">
+     <oj-button on-oj-action="[[navigateToLoanApprove]]" class="oj-button-confirm">
+  Approve Loan
+</oj-button>
+    </div>
+
+    <oj-table
+      id="loansTable"
+      data="[[dataProvider]]"
+      columns='[
+        {"headerText": "Loan ID", "field": "id"},
+        {"headerText": "Account ID", "field": "accountId"},
+        {"headerText": "Amount", "field": "amount"},
+        {"headerText": "Applied Date", "field": "appliedDate"},
+        {"headerText": "Interest Rate", "field": "interestRate"},
+        {"headerText": "Loan Type", "field": "loanType"},
+        {"headerText": "Status", "field": "status"},
+        {"headerText": "Total Amount To Pay", "field": "totalAmountToPay"},
+        {"headerText": "Term (Months)", "field": "term_month"},
+        {"headerText": "Approved Date", "field": "approvedDate"},
+        {"headerText": "Approved By", "field": "approvedByEmployeeId"}
+      ]'
+      class="oj-sm-margin-top-4x"
+      style="width:100%;">
+    </oj-table>
+  </div>
+</div>

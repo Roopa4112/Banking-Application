@@ -1,0 +1,48 @@
+<div id="transactions-container" class="oj-flex oj-sm-justify-content-center oj-sm-align-items-center" style="height:100vh;">
+  <div class="oj-panel oj-flex-item oj-sm-width-1 oj-md-width-8" style="padding:32px; border-radius:12px;">
+    <h2 class="oj-text-center">Manage Transactions</h2>
+
+    <div data-bind="visible: message().length > 0" 
+         class="oj-text-center oj-sm-margin-2x"
+         style="color: red; font-weight: bold;">
+      <span data-bind="text: message"></span>
+    </div>
+
+    <div class="oj-flex oj-sm-flex-direction-column oj-sm-margin-bottom-2x">
+      <oj-input-text id="accountId"
+                     label-hint="Search by Account ID"
+                     value="{{accountId}}"
+                     class="oj-flex-item oj-sm-flex-1 oj-form-control-full-width">
+      </oj-input-text>
+    </div>
+    
+    <div class="oj-flex oj-sm-align-items-center">
+      <oj-button on-oj-action="[[searchTransactions]]" class="oj-button-primary oj-sm-margin-end-1x">
+        Search
+      </oj-button>
+      <oj-button on-oj-action="[[fetchAllTransactions]]" class="oj-button-secondary">
+        Show All
+      </oj-button>
+    </div>
+
+   <oj-table id="transactionTable"
+          aria-label="Transaction Table"
+          data="[[transactionDataProvider]]"
+          columns='[
+            {"headerText": "Transaction ID", "field": "id"},
+            {"headerText": "Account ID", "field": "accountId"},
+            {"headerText": "Amount", "field": "amount"},
+            {"headerText": "Transaction Type", "field": "transactionType"},
+            {"headerText": "Transaction Date", "field": "date"},
+            {"headerText": "Approved", "field": "approved"},
+            {"headerText": "Approved By", "field": "approvedByEmployeeId"},
+            {"headerText": "Status", "field": "status"},
+            {"headerText": "Counterparty", "field": "counterpartyAccountId"}
+          ]'
+          class="oj-sm-margin-top-4x"
+          style="width:100%;">
+</oj-table>
+
+
+  </div>
+</div>

@@ -1,0 +1,186 @@
+<!--
+ Copyright (c) 2014, 2025, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+-->
+
+<style>
+  .about-section {
+    margin-bottom: 2rem;
+  }
+
+  .about-section h2 {
+    font-size: 1.5rem;
+    color: #005A9C;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  .leadership-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+
+  .leader-card {
+    flex: 1 1 250px;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+
+  .leader-card h3 {
+    margin-top: 0;
+    color: #0072C6;
+  }
+
+  .leader-card p {
+    margin: 0.5rem 0 0;
+    font-size: 0.95rem;
+  }
+
+  .oj-carousel {
+    margin: 1.5rem 0;
+  }
+  .about-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  text-align: justify;   /* 👈 This makes it justified */
+}
+.my-element {
+  background-image: url('src/css/images/bank1.png');
+}
+
+</style>
+
+<div class="oj-hybrid-padding">
+  <h1>About Valora Bank</h1>
+
+  <!-- Company Overview -->
+  <div class="about-section">
+   <h2>Company Overview</h2>
+<p>
+  Valora Bank, established in 1907 during the Swadeshi movement, has been a symbol of self-reliance and national pride since its inception. Headquartered in Chennai, it started with a small base but gradually expanded into one of India’s most trusted public sector banks. Today, the bank operates thousands of branches and ATMs across the country, offering a wide spectrum of financial services to individuals, corporates, and rural communities. Its presence extends to more than 75 countries through correspondent banking relationships, ensuring global connectivity for its customers. Over the decades, Valora Bank has successfully adapted to changing economic policies and regulatory environments. It has consistently played a critical role in nation-building by financing infrastructure, agriculture, and industry. The bank is also known for pioneering customer-centric initiatives and technological upgrades. With a legacy of more than a century, Valora Bank continues to balance tradition with modernization.
+</p>
+
+<p>
+  A major milestone in the bank’s history was the merger with Allahabad Bank in 2020, which significantly strengthened its position in the Indian banking sector. This merger transformed Valora Bank into the seventh-largest bank in India, both in terms of assets and customer base. After the merger, the bank’s total assets exceeded ₹895,000 crore, reflecting its enhanced capacity and financial strength. It now serves more than 40 million customers through a broad network of branches, digital platforms, and service centers. The merger also brought in complementary strengths, improving operational efficiency and expanding geographic reach. Valora Bank’s services span retail banking, corporate finance, microfinance, wealth management, insurance, and investment banking. This diversified portfolio helps it cater to the needs of individuals, small businesses, and large enterprises alike. With strong capital backing and a growing base, the bank is positioned for sustainable growth in the competitive financial sector.
+</p>
+
+<p>
+  Valora Bank is widely recognized for its deep rural penetration and commitment to financial inclusion, which have been central to its identity. Through extensive self-help group financing and agricultural credit programs, the bank has empowered millions of rural households. It has also implemented innovative digital initiatives, enabling customers to access services through mobile banking, UPI, and internet platforms. These efforts have earned Valora Bank a reputation as one of the leading institutions in driving India’s digital banking revolution. The bank’s prudent financial management ensures it maintains a healthy Capital Adequacy Ratio (CRAR), strengthening customer and investor confidence. Internationally, it has been rated BBB- Positive by Standard & Poor’s, reflecting its sound governance and operational resilience. Valora Bank continues to focus on both innovation and risk management, balancing growth with security. With a customer-first approach and a commitment to inclusive growth, it stands as a reliable partner in India’s financial progress.
+</p>
+
+  </div>
+  
+  <!-- 🎞️ Image Filmstrip -->
+<div class="oj-sm-width-75 oj-sm-margin-6x-bottom">
+  <oj-film-strip id="aboutFilmStrip"
+                 arrow-display="always"
+                 arrow-placement="adjacent"
+                 max-items-per-page="1"
+                 style="height:320px; width:100%; margin:0 auto; border-radius:12px;">
+
+    <!-- Loop through images dynamically -->
+    <oj-bind-for-each data="[[aboutImages]]">
+      <template>
+        <div class="oj-flex">
+          <img data-bind="attr: { src: $current.data.src, alt: $current.data.alt }"
+               style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+        </div>
+      </template>
+    </oj-bind-for-each>
+
+  </oj-film-strip>
+</div>
+
+
+  <!-- Key Features -->
+  <div class="about-section">
+    <h2>Key Features of Valora Bank</h2>
+    <p>
+      Valora Bank stands out for its wide range of services and innovative banking solutions:
+    </p>
+    <ul>
+      <li><b>Universal Banking Services:</b> Comprehensive offerings in retail, corporate, MSME, and agricultural banking.</li>
+      <li><b>Global Reach:</b> Overseas branches in Singapore, Colombo, and Jaffna, with correspondent ties in 75 countries.</li>
+      <li><b>Diverse Loan Portfolio:</b> Tailored loan products including home, education, vehicle, gold, and business loans.</li>
+      <li><b>Digital Banking:</b> Advanced platforms for net banking, mobile banking, UPI, e-wallets, and digital onboarding.</li>
+      <li><b>Financial Inclusion:</b> Over 15,000+ Business Correspondents bringing banking services to rural and remote areas.</li>
+      <li><b>Government Schemes:</b> Implementation of PMJDY, Mudra Loans, PMAY, pension schemes, and priority sector lending.</li>
+      <li><b>Subsidiaries and Partnerships:</b> Indbank Merchant Banking, Indbank Housing, and Universal Sompo Insurance.</li>
+      <li><b>Customer-Centric Products:</b> Special offerings like festival loans, co-branded cards, and Mahakumbh Mela ATM cards.</li>
+      <li><b>Innovation Focus:</b> Investments in AI, blockchain pilots, and real-time fraud monitoring systems.</li>
+      <li><b>Strong Rural Base:</b> Extensive self-help group financing, micro-credit, and agricultural development programs.</li>
+    </ul>
+  </div>
+
+  <!-- Security Commitment -->
+  <div class="about-section">
+    <h2>Security Commitment</h2>
+    <p>
+      Valora Bank takes customer security as its top priority. All platforms are secured with end-to-end encryption, ensuring that sensitive financial data cannot be intercepted. Multi-factor authentication is required for high-value transactions, adding an extra layer of protection. The bank uses AI-powered fraud detection systems to monitor unusual patterns in real-time and block suspicious activities instantly. In addition, periodic vulnerability assessments and penetration tests are carried out to strengthen defenses against cyber threats. The bank complies fully with Reserve Bank of India (RBI) guidelines, global PCI-DSS standards, and other international security frameworks. Its data centers and digital infrastructure are ISO-certified, with advanced firewalls, intrusion detection systems, and secure APIs. Biometric authentication is increasingly integrated into mobile banking, making digital access safer for customers. Valora Bank also conducts frequent customer awareness campaigns to educate users about phishing and fraud prevention. With disaster recovery systems and geographically distributed servers, it ensures uninterrupted banking even in emergencies. Through these measures, Valora Bank assures every customer that their transactions are secure, reliable, and future-ready.
+    </p>
+  </div>
+
+  <!-- Leadership -->
+  <div class="about-section">
+    <h2>Leadership Team</h2>
+    <div class="leadership-grid">
+      <div class="leader-card">
+        <h3>Shri S L Jain</h3>
+        <p>Managing Director & CEO</p>
+        <p>With over three decades of banking experience, Shri Jain leads Valora Bank’s strategic growth and digital transformation initiatives.</p>
+      </div>
+      <div class="leader-card">
+        <h3>Shri Imran Amin Siddiqui</h3>
+        <p>Executive Director</p>
+        <p>Specializing in retail banking and financial inclusion, Shri Siddiqui drives innovation across customer-centric services.</p>
+      </div>
+      <div class="leader-card">
+        <h3>Shri Ashutosh Choudhury</h3>
+        <p>Executive Director</p>
+        <p>Focused on operational excellence and risk management, Shri Choudhury ensures compliance and performance across all verticals.</p>
+      </div>
+    </div>
+  </div>
+
+    <!-- 👤 About the Developer -->
+  <div class="about-section">
+    <h2>About the Developer</h2>
+    <p>
+      Hi, I am Roopa L S, the developer behind this Valora Bank project. 
+      I am passionate about building scalable, user-friendly applications that 
+      merge financial services with modern technology. This project gave me the 
+      opportunity to combine backend microservices with a powerful frontend 
+      framework, ensuring both performance and security. 
+    </p>
+  </div>
+
+  <!-- 🛠️ Technologies Used -->
+  <div class="about-section">
+    <h2>Technologies Used in Project Development</h2>
+    <p>
+      The project is built using a modern technology stack, ensuring efficiency, 
+      maintainability, and scalability. Below are the major tools and frameworks employed:
+    </p>
+    <ul>
+      <li><b>Frontend:</b> Oracle JET (OJET), Knockout.js, HTML5, CSS3, JavaScript</li>
+      <li><b>Backend:</b> Spring Boot Microservices (User Service, Account Service, Loan Service)</li>
+      <li><b>Database:</b> MariaDB / MySQL (Relational Database for storing accounts, users, loans)</li>
+      <li><b>Integration:</b> REST APIs with JSON for communication between frontend and backend</li>
+      <li><b>Service Discovery:</b> Eureka for microservices registration and discovery</li>
+      <li><b>Other Tools:</b> Maven/Gradle for build management, Git for version control</li>
+      <li><b>Deployment:</b> Localhost (dev) / Cloud-ready architecture for production</li>
+    </ul>
+  </div>
+</div>
